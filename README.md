@@ -1,45 +1,123 @@
-# Project Landing [![web](https://img.shields.io/badge/web-blue)](https://github.com/Alb3rtsonTL/project-landing)
+# DevOps · Práctica Final CI/CD
 
-![Info](https://img.shields.io/badge/type-Template-white)
-![Uptime](https://img.shields.io/badge/uptime-100%25-brightgreen) 
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
+![PHPUnit](https://img.shields.io/badge/PHPUnit-11-6C3483?logo=php&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?logo=render&logoColor=black)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Versión](https://img.shields.io/badge/Versi%C3%B3n-1.0-brightgreen)](https://github.com/Alb3rtsonTL/project-landing)
 
-<img src="/img/preview.png" alt="Preview del proyecto"><br>
+---
 
-## Descripción 📑
+## Descripción
 
-Project Landing es una **landing page estática y reutilizable** diseñada para servir como plantilla de proyectos en desarrollo. Puede usarse para presentaciones de proyectos, previews o como "coming soon" mientras tu proyecto real (portafolio, web dinámica, etc.) se encuentra en desarrollo.  
+Práctica Final de la Electiva DevOps. Implementa el ciclo completo de CI/CD:
 
-El proyecto está desarrollado con **HTML5, CSS3 y JavaScript**, con un diseño responsivo y soporte para **modo oscuro y claro**.
+1. App web **Hello World en PHP**
+2. **Pruebas unitarias** con PHPUnit (11 tests)
+3. **Dockerfile** con `php:8.2-apache`
+4. **GitHub Actions** con 3 jobs encadenados:
+   - Instala dependencias + ejecuta tests
+   - Construye y sube imagen a Docker Hub
+   - Hace deploy automático en Render.com
 
-## Tecnologías Utilizadas 🛠
+---
 
-[![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://es.wikipedia.org/wiki/HTML5)
-[![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://es.wikipedia.org/wiki/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://es.wikipedia.org/wiki/JavaScript)
+## Flujo CI/CD
 
-### Frontend:
-- Estructuración de contenido con HTML5.
-- Estilos y diseño responsivo con CSS3.
-- Interactividad y toggle de tema con JavaScript.
-
-## Características 🎯
-
-1. Diseño responsivo y moderno adaptable a móviles y escritorio.
-2. Toggle de tema (oscuro / claro) con persistencia en localStorage.
-3. Estructura limpia y neutral, lista para forkear.
-4. Ideal para previews, landing pages de proyectos y "coming soon".
-5. Código genérico y reutilizable para cualquier proyecto.
-
-## Uso 🧩 
-
-1. **Clonar el repositorio:**
-```bash
-git clone https://github.com/Alb3rtsonTL//alb3rtsontl-landing.git
-cd project-landing
+```
+git push origin main
+        │
+        ▼
+┌─────────────────────┐
+│  JOB 1 · 🧪 Tests   │  composer install → phpunit tests/
+└─────────┬───────────┘
+          │ si ✅ pasa
+          ▼
+┌──────────────────────────────┐
+│  JOB 2 · 🐳 Build & Push     │  docker build → docker push Docker Hub
+└─────────┬────────────────────┘
+          │ si ✅ pasa
+          ▼
+┌──────────────────────────────┐
+│  JOB 3 · 🚀 Deploy Render    │  curl Deploy Hook → producción actualizada
+└──────────────────────────────┘
 ```
 
-- **Autor:** [Alb3rtsonTL](https://github.com/Alb3rtsonTL) - Albertson Terrero López
+---
+
+## Estructura del Proyecto
+
+```
+DevOps-Final/
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── composer.json
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml        ← Pipeline CI/CD (3 jobs)
+├── src
+│   ├── App.php
+│   ├── img
+│   │   └── background.webp
+│   ├── index.php
+│   ├── scripts.js
+│   └── styles.css
+└── test
+    └── AppTest.php
+```
+
+---
+
+## Secrets requeridos en GitHub
+
+Ir a: **Settings → Secrets and variables → Actions**
+
+| Secret | Descripción | Dónde obtenerlo |
+|---|---|---|
+| `DOCKERHUB_USERNAME` | Usuario de Docker Hub | hub.docker.com |
+| `DOCKERHUB_TOKEN` | Access Token Docker Hub | Account Settings → Security → New Token |
+| `RENDER_DEPLOY_HOOK_URL` | URL del Deploy Hook | Render → tu servicio → Settings → Deploy Hook |
+
+---
+
+## Correr localmente
+
+```bash
+# Instalar dependencias
+composer install
+
+# Ejecutar tests
+./vendor/bin/phpunit tests/ --testdox
+
+# Construir imagen Docker
+docker build -t devops-final .
+
+# Correr contenedor
+docker run -d -p 8080:80 devops-final
+# → http://localhost:8080
+```
+
+---
+
+## Pruebas unitarias (AppTest.php)
+
+| Test | Descripción |
+|---|---|
+| `testGreetingReturnsHelloWorld` | El saludo es exactamente "Hello, World!" |
+| `testGreetingIsNotEmpty` | El saludo no está vacío |
+| `testAuthorIsCorrect` | El autor retorna "Alb3rtsonTL" |
+| `testStackContainsPHP` | El stack incluye PHP |
+| `testStackContainsDocker` | El stack incluye Docker |
+| `testStackContainsGitHubActions` | El stack incluye GitHub Actions |
+| `testStackContainsRender` | El stack incluye Render.com |
+| `testStackDoesNotContainLaravel` | No incluye tecnologías no usadas |
+| `testTechStackIsArray` | El stack retorna un array |
+| `testTechStackHasMinimumEntries` | El stack tiene al menos 3 entradas |
+| `testCourseNameContainsDevOps` | El nombre del curso contiene "DevOps" |
+
+---
+
+- **Autor:** Alb3rtsonTL – Albertson Terrero López
 - **Licencia:** MIT License
-- **Versión:** 1.2
