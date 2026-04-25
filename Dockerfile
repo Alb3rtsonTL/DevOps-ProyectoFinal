@@ -8,8 +8,7 @@ LABEL description="Práctica Final DevOps – Hello World PHP CI/CD"
 LABEL version="1.0"
 
 #─ Copiar código fuente al document root de Apache
-COPY src/   /var/www/html/scr/
-COPY composer.json   /var/www/html/scr/
+COPY src/ /var/www/html/
 
 #─ Permisos correctos para Apache
 RUN chown -R www-data:www-data /var/www/html
