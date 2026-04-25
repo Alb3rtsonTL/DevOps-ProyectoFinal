@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
+# Ahora apunta desde test/ hacia src/
 require_once __DIR__ . '/../src/App.php';
 
 /**
