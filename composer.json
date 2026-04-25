@@ -1,0 +1,29 @@
+{
+    "name": "alb3rtsontl/devops-final",
+    "description": "Práctica Final DevOps – Hello World PHP con CI/CD",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alb3rtsonTL",
+            "homepage": "https://github.com/Alb3rtsonTL"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests/ --colors=always"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
