@@ -1,4 +1,4 @@
-# DevOps · Práctica Final CI/CD
+# DevOps · Proyecto Final CI/CD
 
 ![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
 ![PHPUnit](https://img.shields.io/badge/PHPUnit-11-6C3483?logo=php&logoColor=white)
@@ -11,7 +11,7 @@
 
 ## Descripción
 
-Práctica Final de la Electiva DevOps. Implementa el ciclo completo de CI/CD:
+Proyecto Final de la Electiva DevOps. Implementa el ciclo completo de CI/CD:
 
 1. App web **Hello World en PHP**
 2. **Pruebas unitarias** con PHPUnit (11 tests)
@@ -49,7 +49,7 @@ git push origin main
 ## Estructura del Proyecto
 
 ```
-DevOps-Final/
+DevOps-ProyectoFinal/
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
@@ -64,7 +64,7 @@ DevOps-Final/
 │   ├── index.php
 │   ├── scripts.js
 │   └── styles.css
-└── test
+└── tests
     └── AppTest.php
 ```
 
@@ -92,11 +92,17 @@ composer install
 ./vendor/bin/phpunit tests/ --testdox
 
 # Construir imagen Docker
-docker build -t devops-final .
+docker build -t devops-proyecto-final .
 
 # Correr contenedor
-docker run -d -p 8080:80 devops-final
+docker run -d -p 8080:80 devops-proyecto-final
 # → http://localhost:8080
+
+# Agregar el tag
+docker tag devops-proyecto-final alb3rtsontl/devops-proyecto-final:1.0
+
+# Publicar imagen en Docker Hub
+docker push alb3rtsontl/devops-proyecto-final:1.0
 ```
 
 ---

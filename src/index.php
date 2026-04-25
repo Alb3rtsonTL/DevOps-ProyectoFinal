@@ -119,14 +119,11 @@ $course    = $app->getCourseName();
 
       <!-- Botones -->
       <div class="btns">
-        <a href="https://github.com/Alb3rtsonTL/DevOps-Final" target="_blank">
+        <a href="https://github.com/Alb3rtsonTL/DevOps-ProyectoFinal" target="_blank">
           GitHub Repo ↗
         </a>
-        <a href="https://hub.docker.com/u/alb3rtsontl" target="_blank">
+        <a href="https://hub.docker.com/r/alb3rtsontl/devops-proyectofinal" target="_blank">
           Docker Hub ↗
-        </a>
-        <a href="https://dashboard.render.com" target="_blank">
-          Render Deploy ↗
         </a>
       </div>
 
