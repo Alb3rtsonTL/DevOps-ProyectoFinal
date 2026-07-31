@@ -122,7 +122,7 @@ $course    = $app->getCourseName();
         <a href="https://github.com/AlbertsonTL/DevOps-ProyectoFinal" target="_blank">
           GitHub Repo ↗
         </a>
-        <a href="https://hub.docker.com/r/albertsontl/devops-proyectofinal" target="_blank">
+        <a href="https://hub.docker.com/r/alb3rtsontl/devops-proyectofinal" target="_blank">
           Docker Hub ↗
         </a>
       </div>
