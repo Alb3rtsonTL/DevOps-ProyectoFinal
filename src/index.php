@@ -119,10 +119,10 @@ $course    = $app->getCourseName();
 
       <!-- Botones -->
       <div class="btns">
-        <a href="https://github.com/Alb3rtsonTL/DevOps-ProyectoFinal" target="_blank">
+        <a href="https://github.com/AlbertsonTL/DevOps-ProyectoFinal" target="_blank">
           GitHub Repo ↗
         </a>
-        <a href="https://hub.docker.com/r/alb3rtsontl/devops-proyectofinal" target="_blank">
+        <a href="https://hub.docker.com/r/albertsontl/devops-proyectofinal" target="_blank">
           Docker Hub ↗
         </a>
       </div>
@@ -132,7 +132,7 @@ $course    = $app->getCourseName();
 
   <footer class="page-footer">
     &copy; <?= $year ?>
-    <a href="https://github.com/Alb3rtsonTL" target="_blank">
+    <a href="https://github.com/AlbertsonTL" target="_blank">
       <strong><?= htmlspecialchars($author) ?></strong>
     </a>
   </footer>
