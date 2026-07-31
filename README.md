@@ -7,6 +7,18 @@
 ![Render](https://img.shields.io/badge/Render-46E3B7?logo=render&logoColor=black)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+## Objetivo
+
+Este proyecto demuestra un flujo completo de Integración y Despliegue Continuo (CI/CD), automatizando desde la ejecución de pruebas unitarias hasta la publicación de una imagen Docker y el despliegue en producción mediante Render.
+
+### Lo que demuestra
+
+- Automatización de pruebas
+- Contenedorización de aplicaciones
+- Integración continua
+- Despliegue continuo
+- Gestión segura de secretos en GitHub Actions
+
 ---
 
 ## Descripción
@@ -125,5 +137,5 @@ docker push alb3rtsontl/devops-proyecto-final:1.0
 
 ---
 
-- **Autor:** Alb3rtsonTL – Albertson Terrero López
+- **Autor:** AlbertsonTL – Albertson Terrero López
 - **Licencia:** MIT License
