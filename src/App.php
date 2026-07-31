@@ -19,7 +19,7 @@ class App
      */
     public function getAuthor(): string
     {
-        return "Alb3rtsonTL";
+        return "AlbertsonTL";
     }
 
     /**
